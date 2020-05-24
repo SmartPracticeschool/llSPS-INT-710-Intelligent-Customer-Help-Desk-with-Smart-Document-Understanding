@@ -1,0 +1,214 @@
+[
+    {
+        "id": "6f57102f.4b573",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "4d7a0249.c7046c",
+        "type": "inject",
+        "z": "6f57102f.4b573",
+        "name": "",
+        "topic": "",
+        "payload": "Hello",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 176.00000381469727,
+        "y": 191.00000143051147,
+        "wires": [
+            [
+                "a448b2b6.dccc3"
+            ]
+        ]
+    },
+    {
+        "id": "92e73660.4dedc8",
+        "type": "debug",
+        "z": "6f57102f.4b573",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 835.0000038146973,
+        "y": 230.00000143051147,
+        "wires": []
+    },
+    {
+        "id": "82701f74.d6cd5",
+        "type": "function",
+        "z": "6f57102f.4b573",
+        "name": "input parsing",
+        "func": "msg.payload=msg.payload.text;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 295.00000381469727,
+        "y": 350.0000014305115,
+        "wires": [
+            [
+                "a448b2b6.dccc3"
+            ]
+        ]
+    },
+    {
+        "id": "68e3ff3e.0a05f",
+        "type": "ui_form",
+        "z": "6f57102f.4b573",
+        "name": "",
+        "label": "",
+        "group": "ab6fec99.b56cd",
+        "order": 2,
+        "width": "6",
+        "height": "2",
+        "options": [
+            {
+                "label": "Enter your query",
+                "value": "text",
+                "type": "text",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "text": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "",
+        "x": 135.00000381469727,
+        "y": 410.0000014305115,
+        "wires": [
+            [
+                "82701f74.d6cd5"
+            ]
+        ]
+    },
+    {
+        "id": "b8c25345.4b1f1",
+        "type": "function",
+        "z": "6f57102f.4b573",
+        "name": "parsing",
+        "func": "msg.payload = msg.payload.output.generic[0].text;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 605.0000038146973,
+        "y": 310.0000014305115,
+        "wires": [
+            [
+                "92e73660.4dedc8",
+                "2368e81c.68f018"
+            ]
+        ]
+    },
+    {
+        "id": "47ca1418.6c490c",
+        "type": "debug",
+        "z": "6f57102f.4b573",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 715.0000038146973,
+        "y": 170.00000143051147,
+        "wires": []
+    },
+    {
+        "id": "a448b2b6.dccc3",
+        "type": "watson-conversation-v1",
+        "z": "6f57102f.4b573",
+        "name": "",
+        "workspaceid": "3a1db6d0-d67c-4c9a-9618-32bfb1a7cde0",
+        "multiuser": false,
+        "context": true,
+        "empty-payload": false,
+        "service-endpoint": "https://api.us-south.assistant.watson.cloud.ibm.com/instances/acf00411-c708-4edc-83d2-34722324c775",
+        "timeout": "",
+        "optout-learning": false,
+        "x": 420,
+        "y": 240,
+        "wires": [
+            [
+                "b8c25345.4b1f1",
+                "47ca1418.6c490c"
+            ]
+        ]
+    },
+    {
+        "id": "d5034b60.513358",
+        "type": "ui_button",
+        "z": "6f57102f.4b573",
+        "name": "Clear",
+        "group": "ab6fec99.b56cd",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Clear",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "Hello, How can I help you?",
+        "payloadType": "str",
+        "topic": "",
+        "x": 650,
+        "y": 440,
+        "wires": [
+            [
+                "2368e81c.68f018"
+            ]
+        ]
+    },
+    {
+        "id": "2368e81c.68f018",
+        "type": "ui_template",
+        "z": "6f57102f.4b573",
+        "group": "ab6fec99.b56cd",
+        "name": "",
+        "order": 1,
+        "width": "6",
+        "height": "6",
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "x": 840,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ab6fec99.b56cd",
+        "type": "ui_group",
+        "z": "",
+        "name": "Customer Help Desk",
+        "tab": "683c14e1.6612fc",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "683c14e1.6612fc",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Ecobee3 Customer Care",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
