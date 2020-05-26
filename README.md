@@ -1,4 +1,4 @@
-# llSPS-INT-980-Intelligent-Customer-Help-Desk-with-Smart-Document-Understanding
+# llSPS-INT-710-Intelligent-Customer-Help-Desk-with-Smart-Document-Understanding
 Intelligent Customer Help Desk with Smart Document Understanding
 Category: Artificial Intelligence
 
@@ -18,3 +18,5 @@ Create a customer care dialog skill in Watson Assistant
 Use Smart Document Understanding to build an enhanced Watson Discovery collection
 Create an IBM Cloud Functions web action that allows Watson Assistant to post queries to Watson Discovery
 Build a web application with integration to all these services & deploy the same on IBM Cloud Platform
+
+Demonstration Video - https://youtu.be/rMwYdZ0G--U
